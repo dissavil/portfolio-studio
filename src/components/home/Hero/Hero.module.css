@@ -1,0 +1,443 @@
+.hero {
+  position: relative;
+
+  min-height: 100svh;
+
+  overflow: hidden;
+
+  color: var(--dark-primary);
+  background: var(--black);
+
+  isolation: isolate;
+}
+
+/* ================================
+   BACKGROUND
+================================ */
+
+.background {
+  position: absolute;
+  inset: 0;
+
+  z-index: -2;
+
+  background:
+    radial-gradient(
+      circle at 72% 32%,
+      rgba(216, 255, 62, 0.055),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 18% 78%,
+      rgba(255, 255, 255, 0.045),
+      transparent 28%
+    );
+}
+
+.background::before {
+  content: "";
+
+  position: absolute;
+  inset: -80px;
+
+  opacity: 0.35;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    transparent 85%
+  );
+}
+
+/* Дополнительное свечение */
+
+.background::after {
+  content: "";
+
+  position: absolute;
+  top: 20%;
+  right: 12%;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  background: rgba(216, 255, 62, 0.025);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+/* ================================
+   CONTAINER
+================================ */
+
+.container {
+  position: relative;
+  z-index: 1;
+
+  width: min(
+    calc(100% - var(--gutter) * 2),
+    var(--container)
+  );
+
+  min-height: 100svh;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content {
+  padding-top: 100px;
+}
+
+/* ================================
+   EYEBROW
+================================ */
+
+.eyebrow {
+  margin: 0 0 30px;
+
+  color: var(--dark-muted);
+
+  font-family: var(--font-geist-mono), monospace;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ================================
+   TITLE
+================================ */
+
+.title {
+  max-width: 1250px;
+
+  margin: 0;
+
+  font-size: clamp(52px, 7.5vw, 118px);
+
+  line-height: 0.89;
+
+  font-weight: 500;
+
+  letter-spacing: -0.065em;
+}
+
+/*
+  SplitText создаёт свои span.
+  Поэтому не задаём им здесь animation —
+  этим занимается Motion.
+*/
+
+.title span {
+  color: inherit;
+}
+
+.title span span {
+  color: inherit;
+}
+
+/* Если в заголовке будет accent */
+
+.accentWord {
+  color: var(--dark-secondary) !important;
+
+  transition:
+    color 500ms var(--ease-out);
+}
+
+.hero:hover .accentWord {
+  color: var(--accent) !important;
+}
+
+/* ================================
+   BOTTOM
+================================ */
+
+.bottom {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  margin-top: 72px;
+}
+
+.description {
+  max-width: 400px;
+
+  margin: 0;
+
+  color: var(--dark-secondary);
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  letter-spacing: -0.015em;
+}
+
+/* ================================
+   CTA
+================================ */
+
+.cta {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 28px;
+
+  min-width: 185px;
+
+  padding: 8px 8px 8px 22px;
+
+  overflow: hidden;
+
+  color: var(--black);
+
+  background: var(--white);
+
+  border-radius: 999px;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    background-color 300ms var(--ease-out),
+    transform 300ms var(--ease-out);
+}
+
+.cta::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: var(--accent);
+
+  transform: translateY(101%);
+
+  transition:
+    transform 450ms var(--ease-out);
+}
+
+.cta:hover::before {
+  transform: translateY(0);
+}
+
+.cta > span:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.ctaIcon {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  color: var(--white);
+
+  background: var(--black);
+
+  border-radius: 50%;
+
+  font-size: 16px;
+
+  transition:
+    transform 400ms var(--ease-out);
+}
+
+.cta:hover .ctaIcon {
+  transform: translate(3px, -3px) rotate(6deg);
+}
+
+/* ================================
+   SCROLL INDICATOR
+================================ */
+
+.scrollIndicator {
+  position: absolute;
+
+  right: 0;
+  bottom: 32px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  color: var(--dark-muted);
+
+  font-family: var(--font-geist-mono), monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 0.12em;
+}
+
+.scrollLine {
+  position: relative;
+
+  width: 48px;
+  height: 1px;
+
+  overflow: hidden;
+
+  background: #292929;
+}
+
+.scrollLine::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -12px;
+
+  width: 12px;
+  height: 1px;
+
+  background: var(--accent);
+
+  animation: scrollLine 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(60px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+  .background {
+    background-size: auto;
+  }
+
+  .background::before {
+    inset: -50px;
+
+    background-size: 55px 55px;
+  }
+
+  .background::after {
+    top: 25%;
+    right: -30%;
+
+    width: 350px;
+    height: 350px;
+  }
+
+  .container {
+    width: min(
+      calc(100% - var(--gutter) * 2),
+      var(--container)
+    );
+  }
+
+  .content {
+    padding-top: 80px;
+  }
+
+  .eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .title {
+    font-size: clamp(48px, 14vw, 76px);
+
+    line-height: 0.92;
+  }
+
+  .bottom {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 28px;
+
+    margin-top: 50px;
+  }
+
+  .description {
+    max-width: 330px;
+
+    font-size: 14px;
+  }
+
+  .cta {
+    width: 100%;
+
+    justify-content: space-between;
+  }
+
+  .scrollIndicator {
+    display: none;
+  }
+}
+
+/* ================================
+   REDUCED MOTION
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollLine::after {
+    animation: none;
+  }
+
+  .cta,
+  .ctaIcon,
+  .cta::before {
+    transition: none;
+  }
+}

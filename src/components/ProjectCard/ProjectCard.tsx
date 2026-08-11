@@ -1,24 +1,38 @@
-import styles from './ProjectCard.module.css';
+import Link from "next/link";
+import styles from "./ProjectCard.module.css";
 
-// Определяем строгий интерфейс (типизацию) для нашего компонента
 interface ProjectCardProps {
   title: string;
   description: string;
   tags: string[];
+  category: string;
+  href?: string;
 }
 
-export default function ProjectCard({ title, description, tags }: ProjectCardProps) {
+export default function ProjectCard({
+  title,
+  description,
+  tags,
+  category,
+  href = "#",
+}: ProjectCardProps) {
   return (
-    <div className={styles.card}>
+    <Link href={href} className={styles.card}>
       <div className={styles.imagePlaceholder}>
-        {/* Позже мы заменим этот div на настоящий компонент <Image> из Next.js */}
-        <span>Изображение проекта</span>
+        <span>PREVIEW</span>
       </div>
-      
+
       <div className={styles.content}>
+        <div className={styles.top}>
+          <span className={styles.category}>{category}</span>
+
+          <span className={styles.arrow}>↗</span>
+        </div>
+
         <h3 className={styles.title}>{title}</h3>
+
         <p className={styles.description}>{description}</p>
-        
+
         <div className={styles.tags}>
           {tags.map((tag) => (
             <span key={tag} className={styles.tag}>
@@ -27,6 +41,6 @@ export default function ProjectCard({ title, description, tags }: ProjectCardPro
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

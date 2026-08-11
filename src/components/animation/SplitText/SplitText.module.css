@@ -1,0 +1,15 @@
+.wrapper {
+  display: block;
+}
+
+.line {
+  display: block;
+
+  overflow: hidden;
+}
+
+.inner {
+  display: inline-block;
+
+  will-change: transform, opacity;
+}

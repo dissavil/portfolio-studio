@@ -1,0 +1,176 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  width: 100%;
+  padding: 24px 0;
+}
+
+.container {
+  width: min(calc(100% - var(--gutter) * 2), var(--container));
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--white-pure);
+
+  text-decoration: none;
+
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.logoMark {
+  display: grid;
+  place-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+
+  transition:
+    background-color 250ms var(--ease-out),
+    color 250ms var(--ease-out);
+}
+
+.logo:hover .logoMark {
+  color: var(--black);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.navLink {
+  position: relative;
+
+  color: rgba(255, 255, 255, 0.62);
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  transition: color 200ms ease;
+}
+
+.navLink:hover {
+  color: var(--white-pure);
+}
+
+.navLink::after {
+  content: "";
+
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+  left: 0;
+
+  height: 1px;
+
+  background: var(--accent);
+
+  transform: scaleX(0);
+  transform-origin: right;
+
+  transition: transform 250ms var(--ease-out);
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 10px 10px 16px;
+
+  color: var(--black);
+  background: var(--white);
+
+  border-radius: 999px;
+
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition:
+    transform 250ms var(--ease-out),
+    background-color 250ms var(--ease-out);
+}
+
+.contactLink:hover {
+  transform: translateY(-2px);
+
+  background: var(--accent);
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+
+  width: 25px;
+  height: 25px;
+
+  color: var(--white);
+  background: var(--black);
+
+  border-radius: 50%;
+
+  transition: transform 250ms var(--ease-out);
+}
+
+.contactLink:hover .arrow {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 700px) {
+  .header {
+    padding: 18px 0;
+  }
+
+  .nav {
+    gap: 16px;
+  }
+
+  .navLink {
+    display: none;
+  }
+
+  .contactLink {
+    padding: 8px 8px 8px 13px;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  .logoMark {
+    width: 27px;
+    height: 27px;
+  }
+}

@@ -1,0 +1,173 @@
+.card {
+  display: block;
+
+  overflow: hidden;
+
+  color: #111111;
+  background: #ffffff;
+
+  text-decoration: none;
+
+  border: 1px solid #e8e8e8;
+  border-radius: 18px;
+
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.imagePlaceholder {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 420px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(255, 255, 255, 0.08),
+      transparent 30%
+    ),
+    #151515;
+
+  color: rgba(255, 255, 255, 0.3);
+
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
+.imagePlaceholder::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+}
+
+.imagePlaceholder span {
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  padding: 24px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 32px;
+}
+
+.category {
+  color: #888888;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+
+  font-size: 17px;
+
+  transition:
+    transform 250ms ease,
+    background-color 250ms ease;
+}
+
+.card:hover .arrow {
+  transform: translate(2px, -2px);
+
+  color: #ffffff;
+  background: #111111;
+}
+
+.title {
+  margin: 0 0 10px;
+
+  color: #111111;
+
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+
+.description {
+  max-width: 500px;
+
+  margin: 0 0 24px;
+
+  color: #777777;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  padding: 7px 10px;
+
+  color: #555555;
+  background: #f4f4f4;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .imagePlaceholder {
+    height: 280px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .top {
+    margin-bottom: 24px;
+  }
+}

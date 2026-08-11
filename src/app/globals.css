@@ -1,0 +1,88 @@
+@import "lenis/dist/lenis.css";
+
+:root {
+  --black: #0a0a0a;
+  --black-soft: #111111;
+
+  --white: #f5f5f2;
+  --white-pure: #ffffff;
+  --light: #eeeeeb;
+
+  --text-primary: #111111;
+  --text-secondary: #777777;
+  --text-muted: #999999;
+
+  --dark-primary: #f5f5f2;
+  --dark-secondary: #8a8a8a;
+  --dark-muted: #555555;
+
+  --border-light: #ddddda;
+  --border-dark: #242424;
+
+  --accent: #d8ff3e;
+
+  --container: 1400px;
+  --gutter: 48px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  background: var(--black);
+  color: var(--dark-primary);
+
+  font-family: var(--font-geist), sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-geist), sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font-size: inherit;
+}
+
+button {
+  border: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  color: var(--black);
+  background: var(--accent);
+}
+
+@media (max-width: 700px) {
+  :root {
+    --gutter: 16px;
+  }
+}
