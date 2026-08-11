@@ -13,7 +13,7 @@ export default function FeaturedCases() {
             <h2 className={styles.title}>
               Проекты, которыми
               <br />
-              мы <span>гордимся.</span>
+              мы гордимся.
             </h2>
           </div>
 

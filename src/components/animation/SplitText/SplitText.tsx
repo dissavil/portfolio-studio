@@ -13,6 +13,7 @@ interface SplitTextProps extends HTMLMotionProps<"div"> {
   delay?: number;
   stagger?: number;
   duration?: number;
+  trigger?: "view" | "mount";
 }
 
 export default function SplitText({
@@ -20,14 +21,21 @@ export default function SplitText({
   delay = 0,
   stagger = 0.08,
   duration = 0.8,
+  trigger = "view",
   ...props
 }: SplitTextProps) {
   const shouldReduceMotion = useReducedMotion();
 
-  const lines = children.split("\n");
+  const lines = children
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
 
   return (
-    <motion.div className={styles.wrapper} {...props}>
+    <motion.div
+      className={styles.wrapper}
+      {...props}
+    >
       {lines.map((line, index) => (
         <span
           key={`${line}-${index}`}
@@ -43,18 +51,25 @@ export default function SplitText({
                     opacity: 0,
                   }
             }
-            whileInView={
-              shouldReduceMotion
-                ? undefined
-                : {
-                    y: "0%",
-                    opacity: 1,
+            {...(shouldReduceMotion
+              ? {}
+              : trigger === "mount"
+                ? {
+                    animate: {
+                      y: "0%",
+                      opacity: 1,
+                    },
                   }
-            }
-            viewport={{
-              once: true,
-              amount: 0.8,
-            }}
+                : {
+                    whileInView: {
+                      y: "0%",
+                      opacity: 1,
+                    },
+                    viewport: {
+                      once: true,
+                      amount: 0.2,
+                    },
+                  })}
             transition={{
               duration,
               delay: delay + index * stagger,

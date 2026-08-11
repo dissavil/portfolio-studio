@@ -10,70 +10,9 @@
   isolation: isolate;
 }
 
-/* ================================
-   BACKGROUND
-================================ */
-
-.background {
-  display: none;
-}
-
-.background::before {
-  content: "";
-
-  position: absolute;
-  inset: -80px;
-
-  opacity: 0.35;
-
-  background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.035) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.035) 1px,
-      transparent 1px
-    );
-
-  background-size: 80px 80px;
-
-  mask-image: linear-gradient(
-    to bottom,
-    black 0%,
-    transparent 85%
-  );
-}
-
-/* Дополнительное свечение */
-
-.background::after {
-  content: "";
-
-  position: absolute;
-  top: 20%;
-  right: 12%;
-
-  width: 420px;
-  height: 420px;
-
-  border-radius: 50%;
-
-  background: rgba(216, 255, 62, 0.025);
-
-  filter: blur(100px);
-
-  pointer-events: none;
-}
-
-/* ================================
-   CONTAINER
-================================ */
-
 .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   width: min(
     calc(100% - var(--gutter) * 2),
@@ -93,10 +32,6 @@
   padding-top: 100px;
 }
 
-/* ================================
-   EYEBROW
-================================ */
-
 .eyebrow {
   margin: 0 0 30px;
 
@@ -110,10 +45,6 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-
-/* ================================
-   TITLE
-================================ */
 
 .title {
   max-width: 1250px;
@@ -129,12 +60,6 @@
   letter-spacing: -0.065em;
 }
 
-/*
-  SplitText создаёт свои span.
-  Поэтому не задаём им здесь animation —
-  этим занимается Motion.
-*/
-
 .title span {
   color: inherit;
 }
@@ -142,23 +67,6 @@
 .title span span {
   color: inherit;
 }
-
-/* Если в заголовке будет accent */
-
-.accentWord {
-  color: var(--dark-secondary) !important;
-
-  transition:
-    color 500ms var(--ease-out);
-}
-
-.hero:hover .accentWord {
-  color: var(--accent) !important;
-}
-
-/* ================================
-   BOTTOM
-================================ */
 
 .bottom {
   display: flex;
@@ -184,10 +92,6 @@
 
   letter-spacing: -0.015em;
 }
-
-/* ================================
-   CTA
-================================ */
 
 .cta {
   position: relative;
@@ -273,10 +177,6 @@
   transform: translate(3px, -3px) rotate(6deg);
 }
 
-/* ================================
-   SCROLL INDICATOR
-================================ */
-
 .scrollIndicator {
   position: absolute;
 
@@ -339,29 +239,7 @@
   }
 }
 
-/* ================================
-   MOBILE
-================================ */
-
 @media (max-width: 700px) {
-  .background {
-    background-size: auto;
-  }
-
-  .background::before {
-    inset: -50px;
-
-    background-size: 55px 55px;
-  }
-
-  .background::after {
-    top: 25%;
-    right: -30%;
-
-    width: 350px;
-    height: 350px;
-  }
-
   .container {
     width: min(
       calc(100% - var(--gutter) * 2),
@@ -409,10 +287,6 @@
     display: none;
   }
 }
-
-/* ================================
-   REDUCED MOTION
-================================ */
 
 @media (prefers-reduced-motion: reduce) {
   .scrollLine::after {

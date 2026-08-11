@@ -11,6 +11,7 @@ interface RevealProps extends HTMLMotionProps<"div"> {
   delay?: number;
   duration?: number;
   y?: number;
+  trigger?: "view" | "mount";
 }
 
 export default function Reveal({
@@ -18,32 +19,43 @@ export default function Reveal({
   delay = 0,
   duration = 0.8,
   y = 40,
+  trigger = "view",
   ...props
 }: RevealProps) {
   const shouldReduceMotion = useReducedMotion();
 
+  const hidden = {
+    opacity: 0,
+    y,
+  };
+
+  const visible = {
+    opacity: 1,
+    y: 0,
+  };
+
+  if (shouldReduceMotion) {
+    return (
+      <motion.div {...props}>
+        {children}
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
-      initial={
-        shouldReduceMotion
-          ? false
-          : {
-              opacity: 0,
-              y,
-            }
-      }
-      whileInView={
-        shouldReduceMotion
-          ? undefined
-          : {
-              opacity: 1,
-              y: 0,
-            }
-      }
-      viewport={{
-        once: true,
-        amount: 0.15,
-      }}
+      initial={hidden}
+      {...(trigger === "mount"
+        ? {
+            animate: visible,
+          }
+        : {
+            whileInView: visible,
+            viewport: {
+              once: true,
+              amount: 0.15,
+            },
+          })}
       transition={{
         duration,
         delay,

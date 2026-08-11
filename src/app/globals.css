@@ -46,11 +46,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.pageContent {
-  position: relative;
-  z-index: 2;
-}
-
 main,
 header,
 section {
