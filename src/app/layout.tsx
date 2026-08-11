@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import SmoothScroll from "@/components/layout/SmoothScroll/SmoothScroll";
+import ScrollBackground from "@/components/animation/ScrollBackground/ScrollBackground";
 
 import "./globals.css";
 
@@ -28,10 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body
-        className={`${geist.variable} ${geistMono.variable}`}
-      >
+      <body className={`${geist.variable} ${geistMono.variable}`}>
         <SmoothScroll>
+          <ScrollBackground />
+
           {children}
         </SmoothScroll>
       </body>

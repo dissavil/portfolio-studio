@@ -31,11 +31,10 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
+  position: relative;
+  isolation: isolate;
+
   margin: 0;
 
   background: var(--black);
@@ -45,6 +44,17 @@ body {
 
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+.pageContent {
+  position: relative;
+  z-index: 2;
+}
+
+main,
+header,
+section {
+  position: relative;
 }
 
 body,
