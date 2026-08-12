@@ -3,12 +3,12 @@
 
   overflow: hidden;
 
-  color: #111111;
-  background: #ffffff;
+  color: var(--text-primary);
+  background: var(--white-pure);
 
   text-decoration: none;
 
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--border-light);
   border-radius: 18px;
 
   transition:
@@ -86,7 +86,7 @@
 }
 
 .category {
-  color: #888888;
+  color: var(--text-muted);
 
   font-size: 10px;
   font-weight: 600;
@@ -121,7 +121,7 @@
 .title {
   margin: 0 0 10px;
 
-  color: #111111;
+  color: var(--text-primary);
 
   font-size: clamp(24px, 3vw, 34px);
   line-height: 1;
@@ -134,7 +134,7 @@
 
   margin: 0 0 24px;
 
-  color: #777777;
+  color: var(--text-secondary);
 
   font-size: 14px;
   line-height: 1.6;
@@ -149,8 +149,8 @@
 .tag {
   padding: 7px 10px;
 
-  color: #555555;
-  background: #f4f4f4;
+  color: var(--text-secondary);
+  background: var(--light);
 
   border-radius: 999px;
 

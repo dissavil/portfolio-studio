@@ -84,8 +84,8 @@
 
   margin: 0;
 
-  color: var(--dark-secondary);
-
+  color: #B8BEC8;
+  
   font-size: 15px;
 
   line-height: 1.6;
@@ -206,7 +206,7 @@
 
   overflow: hidden;
 
-  background: #292929;
+  background: var(--border-dark);
 }
 
 .scrollLine::after {

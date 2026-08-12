@@ -102,49 +102,84 @@
 }
 
 .contactLink {
+  position: relative;
+  isolation: isolate;
+
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 
-  padding: 10px 10px 10px 16px;
+  min-height: 42px;
+  padding: 10px 16px;
+
+  overflow: hidden;
 
   color: var(--black);
   background: var(--white);
 
+  border: 1px solid transparent;
   border-radius: 999px;
 
   text-decoration: none;
 
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
 
   transition:
-    transform 250ms var(--ease-out),
-    background-color 250ms var(--ease-out);
+    transform 300ms var(--ease-out),
+    box-shadow 400ms var(--ease-out);
+}
+
+.liquid {
+  position: absolute;
+
+  left: 50%;
+  bottom: -200px;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 38%;
+
+  background: var(--accent);
+
+  transform: translateX(-50%);
+
+  z-index: 0;
+
+  animation: waveSpin 5s linear infinite;
+
+  transition:
+    bottom 700ms var(--ease-out);
+}
+
+.contactText,
+.ctaIcon {
+  position: relative;
+  z-index: 2;
+
+  color: inherit;
+}
+
+.ctaIcon {
+  flex-shrink: 0;
+  transition:
+    transform 300ms var(--ease-out),
+    color 300ms var(--ease-out);
 }
 
 .contactLink:hover {
+  
   transform: translateY(-2px);
-
-  background: var(--accent);
+  box-shadow:
+    0 10px 30px var(--accent-soft);
 }
 
-.arrow {
-  display: grid;
-  place-items: center;
-
-  width: 25px;
-  height: 25px;
-
-  color: var(--white);
-  background: var(--black);
-
-  border-radius: 50%;
-
-  transition: transform 250ms var(--ease-out);
+.contactLink:hover .liquid {
+  bottom: -38px;
 }
 
-.contactLink:hover .arrow {
+.contactLink:hover .ctaIcon {
   transform: translate(2px, -2px);
 }
 
@@ -172,5 +207,15 @@
   .logoMark {
     width: 27px;
     height: 27px;
+  }
+}
+
+@keyframes waveSpin {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  to {
+    transform: translateX(-50%) rotate(360deg);
   }
 }

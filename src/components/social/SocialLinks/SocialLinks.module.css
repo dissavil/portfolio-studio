@@ -1,0 +1,157 @@
+.container {
+  position: absolute;
+
+  right: max(
+    var(--gutter),
+    calc((100% - var(--container)) / 2)
+  );
+
+  bottom: 40px;
+
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.btn {
+  position: relative;
+
+  width: 56px;
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+
+  background: rgba(18, 21, 25, 0.45);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  color: var(--white);
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    border-color 400ms var(--ease-out),
+    box-shadow 400ms var(--ease-out);
+}
+
+.icon {
+  position: relative;
+
+  z-index: 2;
+
+  width: 24px;
+  height: 24px;
+
+  transition:
+    transform 400ms var(--ease-out),
+    color 400ms var(--ease-out);
+}
+
+.liquid {
+  position: absolute;
+
+  left: 50%;
+  bottom: -150px;
+
+  width: 140px;
+  height: 140px;
+
+  z-index: 1;
+
+  border-radius: 38%;
+
+  transform: translateX(-50%);
+
+  animation: waveSpin 5s linear infinite;
+
+  transition:
+    bottom 1500ms var(--ease-out);
+}
+
+.instaLiquid {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+}
+
+.waLiquid {
+  background: #25d366;
+}
+
+@keyframes waveSpin {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    border-color: transparent;
+
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      0 0 24px var(--accent-soft);
+  }
+
+  .btn:hover .icon {
+    transform: scale(1.1);
+    color: var(--white-pure);
+  }
+
+  .btn:hover .liquid {
+    bottom: -10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    right: var(--gutter);
+    bottom: 24px;
+    gap: 12px;
+  }
+
+  .btn {
+    width: 52px;
+    height: 52px;
+  }
+
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid {
+    animation: none;
+    transition: none;
+  }
+
+  .btn,
+  .icon {
+    transition: none;
+  }
+}

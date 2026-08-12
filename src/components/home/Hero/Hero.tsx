@@ -1,8 +1,7 @@
-import Link from "next/link";
-
-import Magnetic from "@/components/animation/Magnetic/Magnetic";
 import Reveal from "@/components/animation/Reveal/Reveal";
 import SplitText from "@/components/animation/SplitText/SplitText";
+import SocialLinks from "@/components/social/SocialLinks/SocialLinks";
+
 
 import styles from "./Hero.module.css";
 
@@ -29,7 +28,7 @@ export default function Hero() {
             className={styles.title}
           >
             Мы создаём
-            digital-продукты,
+            digital продукты,
             которые работают.
           </SplitText>
 
@@ -44,35 +43,12 @@ export default function Hero() {
                 для компаний, которые хотят расти,
                 а не просто присутствовать в интернете.
               </p>
-
-              <Magnetic strength={0.2}>
-                <Link
-                  href="/contacts"
-                  className={styles.cta}
-                >
-                  <span>Обсудить проект</span>
-
-                  <span className={styles.ctaIcon}>
-                    ↗
-                  </span>
-                </Link>
-              </Magnetic>
+              
             </div>
           </Reveal>
         </div>
-
-        <Reveal
-          trigger="mount"
-          delay={1.1}
-          y={10}
-        >
-          <div className={styles.scrollIndicator}>
-            <span>SCROLL TO EXPLORE</span>
-
-            <span className={styles.scrollLine} />
-          </div>
-        </Reveal>
       </div>
+      <SocialLinks />
     </section>
   );
 }

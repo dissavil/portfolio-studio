@@ -1,6 +1,7 @@
 import Header from "@/components/home/Header/Header";
 import Hero from "@/components/home/Hero/Hero";
 import FeaturedCases from "@/components/home/FeaturedCases/FeaturedCases";
+
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
         <Hero />
         <FeaturedCases />
       </main>
+
     </div>
   );
 }

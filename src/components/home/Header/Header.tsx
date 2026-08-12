@@ -1,12 +1,12 @@
 import Link from "next/link";
 import styles from "./Header.module.css";
+import {ArrowUpRight} from "lucide-react"
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link href="/" className={styles.logo} aria-label="OnLabs — главная">
-          <span className={styles.logoMark}>O</span>
+        <Link href="/" className={styles.logo} >
           <span>OnLabs</span>
         </Link>
 
@@ -20,8 +20,19 @@ export default function Header() {
           </Link>
 
           <Link href="/contacts" className={styles.contactLink}>
-            <span>Обсудить проект</span>
-            <span className={styles.arrow}>↗</span>
+            
+            <span className={styles.liquid} />
+
+            <span className={styles.contactText}>
+              Обсудить проект
+            </span>
+
+            <ArrowUpRight
+              size={16}
+              strokeWidth={1.8}
+              className={styles.ctaIcon}
+              aria-hidden = "true"
+            />
           </Link>
         </nav>
       </div>

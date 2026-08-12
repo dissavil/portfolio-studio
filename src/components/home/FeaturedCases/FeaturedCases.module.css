@@ -43,7 +43,7 @@
 }
 
 .title span {
-  color: #999999;
+  color: var(--text-secondary);
 }
 
 .description {
@@ -51,7 +51,7 @@
 
   margin: 0 0 4px;
 
-  color: #777777;
+  color: var(--text-secondary);
 
   font-size: 14px;
   line-height: 1.65;
@@ -86,9 +86,9 @@
 
   padding-bottom: 8px;
 
-  color: #111111;
+  color: var(--text-primary);
 
-  border-bottom: 1px solid #111111;
+  border-bottom: 1px solid var(--text-primary);
 
   text-decoration: none;
 
