@@ -18,8 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "OnLabs — Digital Studio",
-  description:
-    "Создаём digital-продукты, которые работают.",
+  description: "Создаём digital-продукты, которые работают.",
 };
 
 export default function RootLayout({
@@ -30,9 +29,9 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${geist.variable} ${geistMono.variable}`}>
-        <SmoothScroll>
-          <ScrollBackground />
+        <ScrollBackground />
 
+        <SmoothScroll>
           {children}
         </SmoothScroll>
       </body>

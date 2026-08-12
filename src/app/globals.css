@@ -1,28 +1,56 @@
 @import "lenis/dist/lenis.css";
 
 :root {
-  --black: #0a0a0a;
-  --black-soft: #111111;
+  /*BASE*/
 
-  --white: #f5f5f2;
-  --white-pure: #ffffff;
-  --light: #eeeeeb;
+  --black: #080A0D;
+  --black-soft: #121519;
 
-  --text-primary: #111111;
-  --text-secondary: #777777;
-  --text-muted: #999999;
+  --white: #F2F3F5;
+  --white-pure: #FFFFFF;
+  --light: #E8EBEF;
 
-  --dark-primary: #f5f5f2;
-  --dark-secondary: #8a8a8a;
-  --dark-muted: #555555;
 
-  --border-light: #ddddda;
-  --border-dark: #242424;
+  /*TEXT — LIGHT SECTIONS*/
 
-  --accent: #d8ff3e;
+  --text-primary: #111315;
+  --text-secondary: #747A83;
+  --text-muted: #969CA5;
+
+
+  /*TEXT — DARK SECTIONS*/
+
+  --dark-primary: #F2F3F5;
+  --dark-secondary: #A4AAB3;
+  --dark-muted: #6E7681;
+
+  /* Маленькие технические labels:
+     01 / SERVICES / SCROLL / DIGITAL STUDIO */
+  --text-meta: #8FB8E8;
+
+
+  /*ACCENT — CANDY BLUE*/
+
+  --accent: #5DA9FF;
+  --accent-bright: #78B9FF;
+
+  --accent-soft: rgba(93, 169, 255, 0.12);
+  --accent-glow: rgba(93, 169, 255, 0.22);
+
+
+  /*BORDERS*/
+
+  --border-light: #D9DDE2;
+  --border-dark: #252A30;
+
+
+  /*LAYOUT*/
 
   --container: 1400px;
   --gutter: 48px;
+
+
+  /*MOTION*/
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }

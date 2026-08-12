@@ -35,7 +35,7 @@
 .eyebrow {
   margin: 0 0 30px;
 
-  color: var(--dark-muted);
+  color: var(--text-meta);
 
   font-family: var(--font-geist-mono), monospace;
 
@@ -61,7 +61,7 @@
 }
 
 .title span {
-  color: inherit;
+  color: var(--dark-secondary);
 }
 
 .title span span {
