@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Color, Mesh, Program, Renderer, Triangle } from "ogl";
+import { useLenis } from "lenis/react";
+import {
+  Color,
+  Mesh,
+  Program,
+  Renderer,
+  Triangle,
+} from "ogl";
 
 import styles from "./ScrollBackground.module.css";
 
@@ -19,6 +26,8 @@ const FRAG = `#version 300 es
 precision highp float;
 
 uniform float uTime;
+uniform float uScroll;
+uniform float uVelocity;
 uniform float uAmplitude;
 uniform vec3 uColorStops[3];
 uniform vec2 uResolution;
@@ -121,8 +130,17 @@ struct ColorStop {
 }
 
 void main() {
-
   vec2 uv = gl_FragCoord.xy / uResolution;
+
+  float scrollOffset = uScroll * 0.0007;
+
+  vec2 noiseUv = vec2(
+    uv.x * 2.0 + uTime * 0.1 + scrollOffset * 0.45,
+    uTime * 0.25 + scrollOffset
+  );
+
+  float velocityEffect =
+    min(abs(uVelocity) * 0.035, 1.0);
 
   ColorStop colors[3];
 
@@ -149,30 +167,37 @@ void main() {
     rampColor
   );
 
-  float height = snoise(
-    vec2(
-      uv.x * 2.0 + uTime * 0.1,
-      uTime * 0.25
-    )
-  );
+  float dynamicAmplitude =
+    uAmplitude +
+    velocityEffect * 0.55;
 
-  height *= 0.5 * uAmplitude;
+  float height = snoise(noiseUv);
+
+  height *= 0.5 * dynamicAmplitude;
 
   height = exp(height);
+
+  float verticalScroll =
+    mod(uScroll * 0.00022, 1.8);
 
   height =
     uv.y * 2.0 -
     height +
-    0.2;
+    0.2 +
+    verticalScroll;
 
   float intensity =
     0.6 * height;
 
+  float dynamicBlend =
+    uBlend -
+    velocityEffect * 0.08;
+
   float midPoint = 0.20;
 
   float auroraAlpha = smoothstep(
-    midPoint - uBlend * 0.5,
-    midPoint + uBlend * 0.5,
+    midPoint - dynamicBlend * 0.5,
+    midPoint + dynamicBlend * 0.5,
     intensity
   );
 
@@ -195,6 +220,25 @@ const COLORS = [
 export default function ScrollBackground() {
   const containerRef =
     useRef<HTMLDivElement>(null);
+
+  /*
+   * We keep the latest Lenis values in refs,
+   * so React doesn't re-render on every scroll event.
+   */
+  const targetScroll = useRef(0);
+  const targetVelocity = useRef(0);
+
+  const currentScroll = useRef(0);
+  const currentVelocity = useRef(0);
+
+  /*
+   * Current Lenis API exposes scroll + velocity
+   * through the scroll callback.
+   */
+  useLenis((lenis) => {
+    targetScroll.current = lenis.scroll;
+    targetVelocity.current = lenis.velocity;
+  });
 
   useEffect(() => {
     const container =
@@ -249,8 +293,16 @@ export default function ScrollBackground() {
           value: 0,
         },
 
+        uScroll: {
+          value: 0,
+        },
+
+        uVelocity: {
+          value: 0,
+        },
+
         uAmplitude: {
-          value: 1.15,
+          value: 1.65,
         },
 
         uColorStops: {
@@ -265,7 +317,7 @@ export default function ScrollBackground() {
         },
 
         uBlend: {
-          value: 0.42,
+          value: 0.28,
         },
       },
     });
@@ -316,8 +368,28 @@ export default function ScrollBackground() {
           animate
         );
 
+      currentScroll.current +=
+        (
+          targetScroll.current -
+          currentScroll.current
+        ) * 0.08;
+
+      currentVelocity.current +=
+        (
+          targetVelocity.current -
+          currentVelocity.current
+        ) * 0.12;
+
+      targetVelocity.current *= 0.92;
+
       program.uniforms.uTime.value =
         time * 0.0001;
+
+      program.uniforms.uScroll.value =
+        currentScroll.current;
+
+      program.uniforms.uVelocity.value =
+        currentVelocity.current;
 
       renderer.render({
         scene: mesh,
