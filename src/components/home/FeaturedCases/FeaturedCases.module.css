@@ -80,30 +80,85 @@
 }
 
 .allCases {
+  position: relative;
+  isolation: isolate;
+
   display: inline-flex;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
 
-  padding-bottom: 8px;
+  min-height: 42px;
+  padding: 10px 16px;
 
-  color: var(--text-primary);
+  overflow: hidden;
 
-  border-bottom: 1px solid var(--text-primary);
+  color: var(--black);
+  background: var(--white);
+
+  border: 1px solid transparent;
+  border-radius: 999px;
 
   text-decoration: none;
 
   font-size: 13px;
   font-weight: 600;
+  
+  transition:
+    transform 300ms var(--ease-out),
+    box-shadow 400ms var(--ease-out);
 }
 
-.allCasesArrow {
-  font-size: 17px;
+.liquid {
+  position: absolute;
 
-  transition: transform 200ms ease;
+  left: 50%;
+  bottom: -280px;
+
+  width: 250px;
+  height: 250px;
+
+  border-radius: 38%;
+
+  background: var(--accent);
+
+  transform: translateX(-50%);
+
+  z-index: 0;
+
+  animation: waveSpin 5s linear infinite;
+
+  transition:
+    bottom 700ms var(--ease-out);
 }
 
-.allCases:hover .allCasesArrow {
-  transform: translate(3px, -3px);
+
+.allCasesText,
+.ctaIcon {
+  position: relative;
+  z-index: 2;
+
+  color: inherit;
+}
+
+.allCases:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 30px var(--accent-soft);
+}
+
+.allCases:hover .liquid {
+  bottom: -38px;
+}
+
+.ctaIcon {
+  flex-shrink: 0;
+  transition:
+    transform 300ms var(--ease-out),
+    color 300ms var(--ease-out);
+}
+
+.allCases:hover .ctaIcon {
+  transform: translate(2px, -2px);
 }
 
 @media (max-width: 700px) {
@@ -124,6 +179,10 @@
     margin-bottom: 48px;
   }
 
+  .allCases {
+    padding: 8px 8px 8px 13px;
+  }
+
   .title {
     font-size: clamp(44px, 13vw, 70px);
   }
@@ -138,5 +197,15 @@
 
   .grid > *:first-child :global(.imagePlaceholder) {
     height: 320px;
+  }
+}
+
+@keyframes waveSpin {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  to {
+    transform: translateX(-50%) rotate(360deg);
   }
 }

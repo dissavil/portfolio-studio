@@ -169,7 +169,6 @@
 }
 
 .contactLink:hover {
-  
   transform: translateY(-2px);
   box-shadow:
     0 10px 30px var(--accent-soft);

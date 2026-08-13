@@ -1,6 +1,8 @@
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import { projects } from "@/app/data/project";
 import styles from "./FeaturedCases.module.css";
+import {ArrowUpRight} from "lucide-react"
+
 
 export default function FeaturedCases() {
   return (
@@ -38,9 +40,21 @@ export default function FeaturedCases() {
         </div>
 
         <div className={styles.footer}>
+
           <a href="/cases" className={styles.allCases}>
-            <span>Смотреть все проекты</span>
-            <span className={styles.allCasesArrow}>↗</span>
+            
+            <span className={styles.liquid} />
+
+            <span className={styles.allCasesText}>
+              Смотреть все проекты
+            </span>
+
+            <ArrowUpRight
+              size={16}
+              strokeWidth={1.8}
+              className={styles.ctaIcon}
+              aria-hidden = "true"
+            />
           </a>
         </div>
       </div>
