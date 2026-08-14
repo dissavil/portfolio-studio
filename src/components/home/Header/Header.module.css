@@ -65,7 +65,7 @@
 .navLink {
   position: relative;
 
-  color: var(--text-muted);
+  color: var(--text-secondary);
 
   text-decoration: none;
 

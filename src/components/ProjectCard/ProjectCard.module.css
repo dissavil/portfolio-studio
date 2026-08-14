@@ -1,25 +1,31 @@
 .card {
-  display: block;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
 
   overflow: hidden;
 
   color: var(--text-primary);
   background: var(--white-pure);
 
-  text-decoration: none;
-
   border: 1px solid var(--border-light);
   border-radius: 18px;
 
+  text-decoration: none;
+
+  transform: translateZ(0);
+
   transition:
-    transform 300ms ease,
-    box-shadow 300ms ease;
+    transform 500ms var(--ease-out),
+    box-shadow 500ms var(--ease-out);
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
 
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.12);
 }
 
 .imagePlaceholder {
@@ -36,16 +42,41 @@
   background:
     radial-gradient(
       circle at 70% 30%,
-      rgba(255, 255, 255, 0.08),
+      var(--accent-soft),
       transparent 30%
     ),
-    #151515;
+    var(--black-soft);
 
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.35);
 
   font-size: 10px;
   font-weight: 500;
+
   letter-spacing: 0.16em;
+}
+
+.imagePlaceholder::after {
+  content: "";
+
+  position: absolute;
+  inset: -15%;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.12) 50%,
+      transparent 65%
+    );
+
+  transform: translateX(-100%);
+
+  transition:
+    transform 900ms var(--ease-out);
+}
+
+.card:hover .imagePlaceholder::after {
+  transform: translateX(100%);
 }
 
 .imagePlaceholder::before {
@@ -75,6 +106,7 @@
 
 .content {
   padding: 24px;
+  flex: 1;
 }
 
 .top {
@@ -101,21 +133,24 @@
   width: 34px;
   height: 34px;
 
-  border: 1px solid #e5e5e5;
+  color: var(--text-primary);
+
+  border: 1px solid var(--border-light);
   border-radius: 50%;
 
-  font-size: 17px;
-
   transition:
-    transform 250ms ease,
-    background-color 250ms ease;
+    transform 250ms var(--ease-out),
+    color 250ms var(--ease-out),
+    background-color 250ms var(--ease-out);
 }
 
 .card:hover .arrow {
   transform: translate(2px, -2px);
 
-  color: #ffffff;
-  background: #111111;
+  color: var(--white);
+  background: var(--black);
+
+  border-color: var(--black);
 }
 
 .title {

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+
 import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {
@@ -17,25 +19,43 @@ export default function ProjectCard({
   href = "#",
 }: ProjectCardProps) {
   return (
-    <Link href={href} className={styles.card}>
+    <Link
+      href={href}
+      className={styles.card}
+    >
       <div className={styles.imagePlaceholder}>
         <span>PREVIEW</span>
       </div>
 
       <div className={styles.content}>
         <div className={styles.top}>
-          <span className={styles.category}>{category}</span>
+          <span className={styles.category}>
+            {category}
+          </span>
 
-          <span className={styles.arrow}>↗</span>
+          <span className={styles.arrow}>
+            <ArrowUpRight
+              size={17}
+              strokeWidth={1.8}
+              aria-hidden="true"
+            />
+          </span>
         </div>
 
-        <h3 className={styles.title}>{title}</h3>
+        <h2 className={styles.title}>
+          {title}
+        </h2>
 
-        <p className={styles.description}>{description}</p>
+        <p className={styles.description}>
+          {description}
+        </p>
 
         <div className={styles.tags}>
           {tags.map((tag) => (
-            <span key={tag} className={styles.tag}>
+            <span
+              key={tag}
+              className={styles.tag}
+            >
               {tag}
             </span>
           ))}

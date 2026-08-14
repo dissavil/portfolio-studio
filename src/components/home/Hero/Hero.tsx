@@ -1,6 +1,5 @@
 import Reveal from "@/components/animation/Reveal/Reveal";
 import SplitText from "@/components/animation/SplitText/SplitText";
-import SocialLinks from "@/components/social/SocialLinks/SocialLinks";
 
 
 import styles from "./Hero.module.css";
@@ -48,7 +47,6 @@ export default function Hero() {
           </Reveal>
         </div>
       </div>
-      <SocialLinks />
     </section>
   );
 }
