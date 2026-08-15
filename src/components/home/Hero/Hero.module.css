@@ -96,6 +96,45 @@
   letter-spacing: -0.015em;
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-shrink: 0;
+}
+
+.secondaryLink {
+  position: relative;
+  color: var(--dark-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: color 300ms var(--ease-out);
+}
+
+.secondaryLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 400ms var(--ease-out);
+}
+
+.secondaryLink:hover {
+  color: var(--dark-primary);
+}
+
+.secondaryLink:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 .cta {
   position: relative;
 
@@ -280,6 +319,13 @@
     font-size: 14px;
   }
 
+  .actions {
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  } 
+  
   .cta {
     width: 100%;
 

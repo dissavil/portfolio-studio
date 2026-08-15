@@ -1,14 +1,31 @@
 "use client";
 
-import { ReactLenis } from "lenis/react";
+import { useEffect } from "react";
+import { ReactLenis, useLenis } from "lenis/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface SmoothScrollProps {
   children: React.ReactNode;
 }
 
-export default function SmoothScroll({
-  children,
-}: SmoothScrollProps) {
+function ScrollTriggerSync() {
+  useLenis(() => {
+    ScrollTrigger.update();
+  });
+
+  useEffect(() => {
+    gsap.ticker.lagSmoothing(0);
+  }, []);
+
+  return null;
+}
+
+export default function SmoothScroll({ children }: SmoothScrollProps) {
   return (
     <ReactLenis
       root
@@ -20,6 +37,7 @@ export default function SmoothScroll({
         anchors: true,
       }}
     >
+      <ScrollTriggerSync />
       {children}
     </ReactLenis>
   );

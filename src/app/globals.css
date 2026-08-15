@@ -38,7 +38,9 @@
   --accent-soft: rgba(93, 169, 255, 0.12);
   --accent-glow: rgba(93, 169, 255, 0.22);
 
-
+  --signature: #FF8A5C;
+  --signature-soft: rgba(255, 138, 92, 0.14);
+  
   /*BORDERS*/
 
   --border-light: #D9DDE2;

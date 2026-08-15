@@ -1,0 +1,119 @@
+.section {
+  position: relative;
+  padding: 140px 0;
+  background: var(--black);
+}
+
+.container {
+  width: min(calc(100% - var(--gutter) * 2), 900px);
+  margin: 0 auto;
+  padding-left: var(--content-offset);
+}
+
+.eyebrow {
+  margin: 0 0 24px;
+  color: var(--text-meta);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 64px;
+  color: var(--dark-primary);
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  position: relative;
+  background: var(--black);
+  border-top: 1px solid var(--border-dark);
+}
+
+.item:last-child {
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 26px 0;
+  background: none;
+  border: 0;
+  color: var(--dark-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.num {
+  flex-shrink: 0;
+  color: var(--accent);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+}
+
+.questionText {
+  flex: 1;
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  color: var(--dark-primary);
+  border: 1px solid var(--border-dark);
+  border-radius: 50%;
+  transition:
+    transform 400ms var(--ease-out),
+    border-color 300ms var(--ease-out);
+}
+
+.icon[data-open="true"] {
+  transform: rotate(45deg);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.leaf {
+  overflow: hidden;
+  padding-left: 46px;
+}
+
+.leaf p {
+  max-width: 620px;
+  margin: 0 0 30px;
+  color: var(--dark-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+  .section {
+    padding: 90px 0;
+  }
+
+  .title {
+    margin-bottom: 40px;
+  }
+
+  .leaf {
+    padding-left: 0;
+  }
+}
