@@ -1,27 +1,31 @@
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 1000;
 
   width: 100%;
   padding: 24px 0;
 }
 
 .container {
-  width: min(calc(100% - var(--gutter) * 2), var(--container));
+  width: min(
+    calc(100% - var(--gutter) * 2),
+    var(--container)
+  );
 
   margin: 0 auto;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 1001;
+  position: relative;
 }
 
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
 
   color: var(--white-pure);
 
@@ -30,6 +34,49 @@
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.04em;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+
+  white-space: nowrap;
+}
+
+.brandCore,
+.brandLabs {
+  color: var(--white-pure);
+
+  font-size: 28px;
+  line-height: 1;
+
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.brandCore {
+  display: inline-block;
+}
+
+.brandLabs {
+  display: inline-flex;
+
+  margin-left: 5px;
+
+  overflow: visible;
+}
+
+.brandLetter {
+  display: inline-block;
+
+  color: inherit;
+
+  font: inherit;
+  line-height: inherit;
+
+  will-change:
+    transform,
+    opacity;
 }
 
 .logoMark {
@@ -93,7 +140,8 @@
   transform: scaleX(0);
   transform-origin: right;
 
-  transition: transform 250ms var(--ease-out);
+  transition:
+    transform 250ms var(--ease-out);
 }
 
 .navLink:hover::after {
@@ -163,6 +211,7 @@
 
 .ctaIcon {
   flex-shrink: 0;
+
   transition:
     transform 300ms var(--ease-out),
     color 300ms var(--ease-out);
@@ -170,6 +219,7 @@
 
 .contactLink:hover {
   transform: translateY(-2px);
+
   box-shadow:
     0 10px 30px var(--accent-soft);
 }
@@ -201,7 +251,7 @@
 
   .logo {
     font-size: 16px;
-  }
+}
 
   .logoMark {
     width: 27px;
