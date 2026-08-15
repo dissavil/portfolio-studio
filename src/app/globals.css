@@ -2,6 +2,7 @@
 
 :root {
   /*BASE*/
+  --content-offset: 60px;
 
   --black: #080A0D;
   --black-soft: #121519;
@@ -117,5 +118,6 @@ svg {
 @media (max-width: 700px) {
   :root {
     --gutter: 16px;
+    --content-offset: 0px;
   }
 }
