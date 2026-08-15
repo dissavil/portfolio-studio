@@ -96,13 +96,6 @@
   letter-spacing: -0.015em;
 }
 
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  flex-shrink: 0;
-}
-
 .secondaryLink {
   position: relative;
   color: var(--dark-secondary);
@@ -133,152 +126,6 @@
 .secondaryLink:hover::after {
   transform: scaleX(1);
   transform-origin: left;
-}
-
-.cta {
-  position: relative;
-
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 28px;
-
-  min-width: 185px;
-
-  padding: 8px 8px 8px 22px;
-
-  overflow: hidden;
-
-  color: var(--black);
-
-  background: var(--white);
-
-  border-radius: 999px;
-
-  text-decoration: none;
-
-  font-size: 13px;
-  font-weight: 600;
-
-  transition:
-    background-color 300ms var(--ease-out),
-    transform 300ms var(--ease-out);
-}
-
-.cta::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  background: var(--accent);
-
-  transform: translateY(101%);
-
-  transition:
-    transform 450ms var(--ease-out);
-}
-
-.cta:hover::before {
-  transform: translateY(0);
-}
-
-.cta > span:first-child {
-  position: relative;
-  z-index: 1;
-}
-
-.ctaIcon {
-  position: relative;
-  z-index: 1;
-
-  display: grid;
-
-  place-items: center;
-
-  width: 34px;
-  height: 34px;
-
-  flex-shrink: 0;
-
-  color: var(--white);
-
-  background: var(--black);
-
-  border-radius: 50%;
-
-  font-size: 16px;
-
-  transition:
-    transform 400ms var(--ease-out);
-}
-
-.cta:hover .ctaIcon {
-  transform: translate(3px, -3px) rotate(6deg);
-}
-
-.scrollIndicator {
-  position: absolute;
-
-  right: 0;
-  bottom: 32px;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 14px;
-
-  color: var(--dark-muted);
-
-  font-family: var(--font-geist-mono), monospace;
-
-  font-size: 8px;
-
-  letter-spacing: 0.12em;
-}
-
-.scrollLine {
-  position: relative;
-
-  width: 48px;
-  height: 1px;
-
-  overflow: hidden;
-
-  background: var(--border-dark);
-}
-
-.scrollLine::after {
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  left: -12px;
-
-  width: 12px;
-  height: 1px;
-
-  background: var(--accent);
-
-  animation: scrollLine 2.2s ease-in-out infinite;
-}
-
-@keyframes scrollLine {
-  0% {
-    transform: translateX(0);
-  }
-
-  50% {
-    transform: translateX(60px);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
 }
 
 @media (max-width: 700px) {
@@ -319,32 +166,9 @@
     font-size: 14px;
   }
 
-  .actions {
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  } 
-  
-  .cta {
-    width: 100%;
-
-    justify-content: space-between;
-  }
-
-  .scrollIndicator {
-    display: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .scrollLine::after {
     animation: none;
   }
-
-  .cta,
-  .ctaIcon,
-  .cta::before {
-    transition: none;
   }
 }

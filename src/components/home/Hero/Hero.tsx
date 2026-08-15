@@ -34,27 +34,8 @@ export default function Hero() {
                 для компаний, которые хотят расти,
                 а не просто присутствовать в интернете.
               </p>
-
-              <div className={styles.actions}>
-                <Link href="/contacts" className={styles.cta}>
-                  <span>Обсудить проект</span>
-
-                  <span className={styles.ctaIcon}>
-                    <ArrowUpRight size={16} strokeWidth={1.8} aria-hidden="true" />
-                  </span>
-                </Link>
-
-                <Link href="#cases" className={styles.secondaryLink}>
-                  Смотреть кейсы
-                </Link>
-              </div>
             </div>
           </Reveal>
-
-          <div className={styles.scrollIndicator}>
-            <span>SCROLL</span>
-            <span className={styles.scrollLine} />
-          </div>
         </div>
       </div>
     </section>
