@@ -114,7 +114,7 @@
 }
 
 .card:hover {
-  border-color: var(--accent);
+  border-color: var(--project-accent, var(--accent));
   transform: translateY(-6px);
 }
 
@@ -133,7 +133,7 @@
 }
 
 .index {
-  color: var(--accent);
+  color: var(--project-accent, var(--accent));
 }
 
 .category {
@@ -141,24 +141,48 @@
 }
 
 .preview {
-  display: grid;
+  position: relative;
 
+  display: grid;
   place-items: center;
 
   flex: 1;
 
   margin: 20px 0;
 
-  background: var(--black);
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 70% 25%,
+      color-mix(in srgb, var(--project-accent, var(--accent)) 18%, transparent),
+      transparent 60%
+    ),
+    var(--black);
+
   border-radius: 12px;
+}
 
-  color: var(--dark-muted);
+.previewImage {
+  object-fit: cover;
 
-  font-family: var(--font-geist-mono), monospace;
+  transition: transform 700ms var(--ease-out);
+}
 
-  font-size: 10px;
+.card:hover .previewImage {
+  transform: scale(1.04);
+}
 
-  letter-spacing: 0.14em;
+.previewFallback {
+  color: rgba(255, 255, 255, 0.12);
+
+  font-size: clamp(24px, 4vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+
+  text-align: center;
+
+  padding: 0 16px;
 }
 
 .meta h3 {

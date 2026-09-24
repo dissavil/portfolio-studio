@@ -180,3 +180,57 @@
     gap: 56px;
   }
 }
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.serverError {
+  margin: 0;
+  padding: 12px 14px;
+
+  color: #ffb4a2;
+  background: rgba(255, 138, 92, 0.1);
+
+  border: 1px solid rgba(255, 138, 92, 0.28);
+  border-radius: 10px;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.resetButton {
+  margin-top: 8px;
+  padding: 0;
+
+  color: var(--dark-muted);
+  background: none;
+
+  font-size: 13px;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  cursor: pointer;
+
+  transition: color 250ms var(--ease-out);
+}
+
+.resetButton:hover {
+  color: var(--accent-bright);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}

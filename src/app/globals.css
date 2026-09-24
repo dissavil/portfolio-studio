@@ -15,8 +15,8 @@
   /*TEXT — LIGHT SECTIONS*/
 
   --text-primary: #111315;
-  --text-secondary: #B8BEC8;
-  --text-muted: #969CA5;
+  --text-secondary: #565D66;
+  --text-muted: #6B727B;
 
 
   /*TEXT — DARK SECTIONS*/
@@ -121,5 +121,60 @@ svg {
   :root {
     --gutter: 16px;
     --content-offset: 0px;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--gutter);
+  z-index: 2000;
+
+  padding: 12px 20px;
+
+  color: var(--black);
+  background: var(--accent);
+
+  border-radius: 0 0 10px 10px;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: top 200ms var(--ease-out);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Единый видимый фокус. Сейчас в проекте фокус-стили не заданы нигде,
+   то есть навигация с клавиатуры вслепую. :focus-visible не мешает мыши. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+
+  border-radius: 4px;
+}
+
+/* Комфортная кликабельная область на тач-устройствах. */
+@media (pointer: coarse) {
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Глобальный тормоз анимаций. Раньше это правило жило в animations.css,
+   который никуда не импортирован — то есть не работало вообще. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -1,25 +1,31 @@
-import type { Metadata } from "next";
-
 import Header from "@/components/home/Header/Header";
+import Hero from "@/components/home/Hero/Hero";
+import OurApproach from "@/components/home/OurApproach/OurApproach";
+import CasesShowcase from "@/components/home/CasesShowcase/CasesShowcase";
 import ServicesShowcase from "@/components/home/ServicesShowcase/ServicesShowcase";
 import Faq from "@/components/home/Faq/Faq";
 import Contacts from "@/components/home/Contacts/Contacts";
 import SocialLinks from "@/components/social/SocialLinks/SocialLinks";
+import Footer from "@/components/layout/Footer/Footer";
 
-export const metadata: Metadata = {
-  title: "Услуги — OnLabs",
-  description: "Веб-продукты, сайты, UI/UX и поддержка после запуска. Разработка в Алматы.",
-};
+import styles from "./page.module.css";
 
-export default function ServicesPage() {
+export default function Home() {
   return (
-    <div>
+    <div className={styles.page}>
       <Header />
-      <main style={{ paddingTop: "80px" }}>
+
+      <main id="main">
+        <Hero />
+        <OurApproach />
+        <CasesShowcase />
         <ServicesShowcase />
         <Faq />
         <Contacts />
       </main>
+
+      <Footer />
+
       <SocialLinks />
     </div>
   );

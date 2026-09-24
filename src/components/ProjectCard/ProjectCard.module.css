@@ -18,95 +18,133 @@
 
   transition:
     transform 500ms var(--ease-out),
+    border-color 500ms var(--ease-out),
     box-shadow 500ms var(--ease-out);
 }
 
-.card:hover {
+.card:hover,
+.card:focus-visible {
   transform: translateY(-8px);
 
-  box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.12);
+  border-color: var(--project-accent, var(--accent));
+
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
 }
 
-.imagePlaceholder {
+.media {
   position: relative;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  height: 420px;
+  /* Фиксируем пропорцию, а не высоту — карточка не скачет при загрузке. */
+  aspect-ratio: 16 / 11;
 
   overflow: hidden;
 
   background:
     radial-gradient(
-      circle at 70% 30%,
-      var(--accent-soft),
-      transparent 30%
+      circle at 70% 25%,
+      color-mix(in srgb, var(--project-accent, var(--accent)) 22%, transparent),
+      transparent 55%
     ),
     var(--black-soft);
-
-  color: rgba(255, 255, 255, 0.35);
-
-  font-size: 10px;
-  font-weight: 500;
-
-  letter-spacing: 0.16em;
 }
 
-.imagePlaceholder::after {
-  content: "";
-
-  position: absolute;
-  inset: -15%;
-
-  background:
-    linear-gradient(
-      120deg,
-      transparent 35%,
-      rgba(255, 255, 255, 0.12) 50%,
-      transparent 65%
-    );
-
-  transform: translateX(-100%);
-
-  transition:
-    transform 900ms var(--ease-out);
-}
-
-.card:hover .imagePlaceholder::after {
-  transform: translateX(100%);
-}
-
-.imagePlaceholder::before {
+.media::before {
   content: "";
 
   position: absolute;
   inset: 0;
+  z-index: 1;
 
   background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.035) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.035) 1px,
-      transparent 1px
-    );
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 
   background-size: 50px 50px;
 }
 
-.imagePlaceholder span {
+/* Блик по обложке при наведении. */
+.media::after {
+  content: "";
+
+  position: absolute;
+  inset: -15%;
+  z-index: 2;
+
+  background: linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.14) 50%,
+    transparent 65%
+  );
+
+  transform: translateX(-100%);
+
+  transition: transform 900ms var(--ease-out);
+}
+
+.card:hover .media::after {
+  transform: translateX(100%);
+}
+
+.image {
+  object-fit: cover;
+
+  transform: scale(1.01);
+
+  transition: transform 700ms var(--ease-out);
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.fallback {
   position: relative;
   z-index: 1;
+
+  color: rgba(255, 255, 255, 0.16);
+
+  font-size: clamp(56px, 9vw, 96px);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+
+  text-transform: uppercase;
+
+  user-select: none;
+}
+
+.year {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+
+  padding: 5px 10px;
+
+  color: var(--white);
+  background: rgba(8, 10, 13, 0.55);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border-radius: 999px;
+
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
 }
 
 .content {
-  padding: 24px;
+  display: flex;
+  flex-direction: column;
+
   flex: 1;
+
+  padding: 24px;
 }
 
 .top {
@@ -114,7 +152,9 @@
   align-items: center;
   justify-content: space-between;
 
-  margin-bottom: 32px;
+  gap: 16px;
+
+  margin-bottom: 24px;
 }
 
 .category {
@@ -130,6 +170,8 @@
   display: grid;
   place-items: center;
 
+  flex-shrink: 0;
+
   width: 34px;
   height: 34px;
 
@@ -141,7 +183,8 @@
   transition:
     transform 250ms var(--ease-out),
     color 250ms var(--ease-out),
-    background-color 250ms var(--ease-out);
+    background-color 250ms var(--ease-out),
+    border-color 250ms var(--ease-out);
 }
 
 .card:hover .arrow {
@@ -154,20 +197,32 @@
 }
 
 .title {
-  margin: 0 0 10px;
+  margin: 0 0 6px;
 
   color: var(--text-primary);
 
   font-size: clamp(24px, 3vw, 34px);
-  line-height: 1;
+  line-height: 1.05;
   font-weight: 500;
   letter-spacing: -0.045em;
 }
 
-.description {
-  max-width: 500px;
+.subtitle {
+  margin: 0 0 14px;
 
-  margin: 0 0 24px;
+  color: var(--text-muted);
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.description {
+  max-width: 520px;
+
+  /* margin-bottom: auto прижимает теги к низу карточки,
+     чтобы в сетке они выравнивались между собой. */
+  margin: 0 0 auto;
+  padding-bottom: 24px;
 
   color: var(--text-secondary);
 
@@ -194,15 +249,27 @@
 }
 
 @media (max-width: 700px) {
-  .imagePlaceholder {
-    height: 280px;
-  }
-
   .content {
     padding: 20px;
   }
 
   .top {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .image,
+  .media::after {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .card:hover .image {
+    transform: none;
   }
 }

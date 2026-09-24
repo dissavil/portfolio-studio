@@ -6,6 +6,7 @@ import ServicesShowcase from "@/components/home/ServicesShowcase/ServicesShowcas
 import Faq from "@/components/home/Faq/Faq";
 import Contacts from "@/components/home/Contacts/Contacts";
 import SocialLinks from "@/components/social/SocialLinks/SocialLinks";
+import Footer from "@/components/layout/Footer/Footer";
 
 import styles from "./page.module.css";
 
@@ -13,7 +14,8 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <Header />
-      <main>
+
+      <main id="main">
         <Hero />
         <OurApproach />
         <CasesShowcase />
@@ -21,6 +23,9 @@ export default function Home() {
         <Faq />
         <Contacts />
       </main>
+
+      <Footer />
+
       <SocialLinks />
     </div>
   );

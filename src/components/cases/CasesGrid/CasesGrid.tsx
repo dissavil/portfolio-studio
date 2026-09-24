@@ -1,9 +1,9 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
-import type { Project } from "@/app/data/project";
+import type { Project } from "@/app/data/projects";
 
 import styles from "./CasesGrid.module.css";
 
@@ -15,54 +15,45 @@ const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.14,
+      staggerChildren: 0.12,
       delayChildren: 0.1,
     },
   },
 };
 
 const cardVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 80,
-    scale: 0.96,
-  },
-
+  hidden: { opacity: 0, y: 60, scale: 0.97 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-
     transition: {
-      duration: 0.85,
+      duration: 0.8,
       ease: [0.22, 1, 0.36, 1] as const,
     },
   },
 };
 
-export default function CasesGrid({
-  projects,
-}: CasesGridProps) {
+export default function CasesGrid({ projects }: CasesGridProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
       className={styles.grid}
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
+      variants={shouldReduceMotion ? undefined : containerVariants}
+      initial={shouldReduceMotion ? undefined : "hidden"}
+      /* whileInView вместо animate: карточки ниже первого экрана
+         не проигрывают анимацию «в пустоту» до того, как их увидят. */
+      whileInView={shouldReduceMotion ? undefined : "visible"}
+      viewport={{ once: true, amount: 0.05 }}
     >
-      {projects.map((project) => (
+      {projects.map((project, index) => (
         <motion.div
-          key={project.title}
+          key={project.slug}
           className={styles.item}
-          variants={cardVariants}
+          variants={shouldReduceMotion ? undefined : cardVariants}
         >
-          <ProjectCard
-            title={project.title}
-            description={project.description}
-            category={project.category}
-            tags={project.tags}
-            href={project.href}
-          />
+          <ProjectCard project={project} priority={index < 2} />
         </motion.div>
       ))}
     </motion.div>

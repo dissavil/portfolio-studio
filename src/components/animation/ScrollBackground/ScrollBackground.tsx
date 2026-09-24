@@ -248,6 +248,32 @@ export default function ScrollBackground() {
       return;
     }
 
+    /*
+     * Три причины вообще не поднимать WebGL-контекст:
+     *  - пользователь просил меньше анимаций;
+     *  - слабое устройство (мало ядер) — фон съедает батарею и роняет FPS;
+     *  - экономия трафика включена.
+     * Во всех случаях остаётся статичный фон из CSS, вёрстка не ломается.
+     */
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const isLowPower =
+      navigator.hardwareConcurrency !== undefined &&
+      navigator.hardwareConcurrency <= 4;
+
+    const saveData =
+      (
+        navigator as Navigator & {
+          connection?: { saveData?: boolean };
+        }
+      ).connection?.saveData === true;
+
+    if (prefersReducedMotion || isLowPower || saveData) {
+      return;
+    }
+
     const renderer = new Renderer({
       alpha: true,
       premultipliedAlpha: true,
@@ -367,6 +393,15 @@ export default function ScrollBackground() {
         requestAnimationFrame(
           animate
         );
+
+      /*
+       * Вкладка в фоне — кадры не считаем.
+       * requestAnimationFrame сам тормозит в большинстве браузеров,
+       * но не везде, а шейдер здесь недешёвый.
+       */
+      if (document.hidden) {
+        return;
+      }
 
       currentScroll.current +=
         (
