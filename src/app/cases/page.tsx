@@ -21,7 +21,7 @@ export default function CasesPage() {
     <>
       <Header />
 
-      <main className={styles.page}>
+      <main id="main" className={styles.page}>
         <header className={styles.head}>
           <p className={styles.eyebrow}>Selected work / {projects.length}</p>
 
