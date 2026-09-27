@@ -13,16 +13,11 @@ import { site } from "@/lib/site";
 
 import styles from "./Contacts.module.css";
 
-interface ContactsProps {
-  headingLevel?: "h1" | "h2";
-}
-
-export default function Contacts({ headingLevel = "h2" }: ContactsProps) {
+export default function Contacts() {
   const [sent, setSent] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
   const pathname = usePathname();
-  const Heading = headingLevel;
 
   const {
     register,
@@ -69,11 +64,11 @@ export default function Contacts({ headingLevel = "h2" }: ContactsProps) {
           <Reveal>
             <p className={styles.eyebrow}>06 / Get in touch</p>
 
-            <Heading className={styles.title}>
+            <h2 className={styles.title}>
               Обсудим
               <br />
               ваш проект?
-            </Heading>
+            </h2>
 
             <p className={styles.description}>
               Расскажите о задаче — ответим {site.responseTime}. Быстрее всего —
