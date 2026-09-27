@@ -287,7 +287,6 @@
 
 
 .burger {
-  /* На десктопе прячем — там видна полная навигация. */
   display: none;
 
   position: relative;
@@ -338,7 +337,6 @@
   transform: translate(-50%, 0) rotate(-45deg);
 }
 
-/* ---------- ПОЛНОЭКРАННОЕ МЕНЮ ---------- */
 
 .menu {
   position: fixed;

@@ -18,7 +18,8 @@ export default function Footer() {
           </Link>
 
           <p className={styles.tagline}>
-            Сайты для девелоперов и архитектурных бюро.
+            Сайты и digital-продукты.
+            От идеи до работающего решения.
             <br />
             {site.city}, {site.country}.
           </p>
@@ -100,7 +101,7 @@ export default function Footer() {
           </span>
 
           <span className={styles.built}>
-            Сделано в {site.city} — архитектура и код
+            Made in Almaty — O(n) labs
           </span>
         </div>
       </div>

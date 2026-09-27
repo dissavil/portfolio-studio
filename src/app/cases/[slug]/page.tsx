@@ -19,16 +19,12 @@ import { site } from "@/lib/site";
 
 import styles from "./page.module.css";
 
-/**
- * Все кейсы известны на этапе сборки — Next отрендерит их статикой.
- * Добавил проект в projects.ts → появилась новая статическая страница.
- */
+
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
 
 interface PageProps {
-  // В Next 15+ params — это Promise, его нужно await'ить.
   params: Promise<{ slug: string }>;
 }
 

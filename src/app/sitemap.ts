@@ -3,10 +3,6 @@ import type { MetadataRoute } from "next";
 import { projects, casePath } from "@/app/data/projects";
 import { site } from "@/lib/site";
 
-/**
- * Next сам отдаст это по /sitemap.xml.
- * Новый кейс в projects.ts → новая строка в карте сайта, вручную ничего не правим.
- */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 

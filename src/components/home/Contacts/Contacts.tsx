@@ -71,8 +71,8 @@ export default function Contacts() {
             </h2>
 
             <p className={styles.description}>
-              Расскажите о задаче — ответим {site.responseTime}. Быстрее всего —
-              в WhatsApp или Telegram.
+              Расскажите, что хотите сделать.
+              Обсудим задачу, предложим подход и вернёмся с понятным планом.
             </p>
           </Reveal>
 

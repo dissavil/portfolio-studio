@@ -26,14 +26,13 @@ export default function CasesPage() {
           <p className={styles.eyebrow}>Selected work / {projects.length}</p>
 
           <h1 className={styles.title}>
-            Проекты, где архитектура
-            <br />
-            встречается с кодом
+            Проекты, где
+            дизайн встречается с кодом.
           </h1>
 
           <p className={styles.description}>
-            Девелоперские проекты и архитектурные бюро Алматы. Каждый сайт —
-            от первого экрана до заявки в CRM.
+            Сайты и digital-продукты, которые мы проектировали и разрабатывали.
+            От идеи и интерфейса до готового решения.
           </p>
         </header>
 

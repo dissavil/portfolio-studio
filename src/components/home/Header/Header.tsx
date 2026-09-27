@@ -67,10 +67,6 @@ export default function Header() {
     mass: 0.6,
   });
 
-  // Закрываем меню при переходе на другую страницу.
-  // Это официальный паттерн React «adjust state during render» —
-  // вариант с setState внутри useEffect даёт лишний каскадный рендер
-  // и ругается react-hooks/set-state-in-effect.
   const [lastPathname, setLastPathname] = useState(pathname);
 
   if (pathname !== lastPathname) {
@@ -78,7 +74,6 @@ export default function Header() {
     setMenuOpen(false);
   }
 
-  // Пока меню открыто — останавливаем Lenis, иначе фон скроллится под оверлеем.
   useEffect(() => {
     if (!lenis) return;
 
@@ -95,7 +90,6 @@ export default function Header() {
     };
   }, [menuOpen, lenis]);
 
-  // Esc закрывает меню — базовая клавиатурная доступность.
   useEffect(() => {
     if (!menuOpen) return;
 

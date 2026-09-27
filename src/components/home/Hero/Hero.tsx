@@ -1,5 +1,7 @@
+
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+
 
 import Reveal from "@/components/animation/Reveal/Reveal";
 import SplitText from "@/components/animation/SplitText/SplitText";
@@ -14,15 +16,9 @@ export default function Hero() {
         <div className={styles.content}>
           <Reveal trigger="mount" delay={0.1} y={20}>
             <p className={styles.eyebrow}>
-              Web studio / Almaty — KZ / {projects.length} проектов
+              Web studio / Almaty — KZ
             </p>
           </Reveal>
-
-          {/*
-            Было: «Мы создаём digital продукты, которые работают».
-            Так говорит любая студия. Новый заголовок называет,
-            для кого мы работаем, — это и есть отличие.
-          */}
           <SplitText
             trigger="mount"
             delay={0.2}
@@ -30,24 +26,30 @@ export default function Hero() {
             duration={0.9}
             className={styles.title}
           >
-            Сайты для девелоперов
-            и архитектурных бюро.
-            Проектируем и пишем сами.
+            Создаём сайты и
+            digital-продукты
+            под реальные задачи.
           </SplitText>
 
           <Reveal trigger="mount" delay={0.7} y={30}>
             <div className={styles.bottom}>
               <p className={styles.description}>
-                Жилые комплексы, клубные посёлки и архитектурные студии.
-                Архитектурный бэкграунд плюс собственная разработка — поэтому
-                не приходится объяснять, что такое экспликация и зачем рендеру
-                грузиться первым.
+                От структуры и дизайна до разработки и запуска.
+                Делаем сайты, веб-продукты и интерактивные решения,
+                собирая всё внутри одной команды.
               </p>
 
               <Link href="/cases" className={styles.cta}>
-                <span>Смотреть кейсы</span>
+                <span className={styles.liquid} />
 
-                <ArrowUpRight size={16} strokeWidth={1.8} aria-hidden="true" />
+                <span className={styles.casesLink} >Смотреть кейсы</span>
+
+                <ArrowUpRight
+                size={16}
+                strokeWidth={1.8}
+                className={styles.ctaIcon}
+                aria-hidden="true"
+              />
               </Link>
             </div>
           </Reveal>
