@@ -29,7 +29,6 @@ export default function Hero() {
             stagger={0.1}
             duration={0.9}
             className={styles.title}
-            as="h1"
           >
             Сайты для девелоперов
             и архитектурных бюро.
