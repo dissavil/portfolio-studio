@@ -13,11 +13,11 @@ import { site } from "@/lib/site";
 
 import styles from "./Contacts.module.css";
 
-export default function Contacts() {
+interface ContactsProps {\n  headingLevel?: "h1" | "h2";\n}\n\nexport default function Contacts({ headingLevel = "h2" }: ContactsProps) {
   const [sent, setSent] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
-  const pathname = usePathname();
+  const pathname = usePathname();\n  const Heading = headingLevel;
 
   const {
     register,
