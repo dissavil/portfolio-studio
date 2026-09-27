@@ -18,7 +18,7 @@ export default function ContactsPage() {
       <Header />
 
       <main id="main" style={{ paddingTop: "120px" }}>
-        <Contacts />
+        <Contacts headingLevel="h1" />
       </main>
 
       <Footer />
