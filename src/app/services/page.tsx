@@ -1,31 +1,47 @@
+import type { Metadata } from "next";
+
 import Header from "@/components/home/Header/Header";
-import Hero from "@/components/home/Hero/Hero";
-import OurApproach from "@/components/home/OurApproach/OurApproach";
-import CasesShowcase from "@/components/home/CasesShowcase/CasesShowcase";
 import ServicesShowcase from "@/components/home/ServicesShowcase/ServicesShowcase";
-import Faq from "@/components/home/Faq/Faq";
 import Contacts from "@/components/home/Contacts/Contacts";
 import SocialLinks from "@/components/social/SocialLinks/SocialLinks";
 import Footer from "@/components/layout/Footer/Footer";
+import { services } from "@/app/data/services";
 
 import styles from "./page.module.css";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Услуги",
+  description:
+    "Сайты для жилых комплексов, интерактивные планировки, 3D-туры и сопровождение для девелоперов и архитектурных бюро.",
+  alternates: { canonical: "/services" },
+};
+
+export default function ServicesPage() {
   return (
     <div className={styles.page}>
       <Header />
 
       <main id="main">
-        <Hero />
-        <OurApproach />
-        <CasesShowcase />
+        <header className={styles.head}>
+          <p className={styles.eyebrow}>Services / {services.length}</p>
+
+          <h1 className={styles.title}>
+            Сайты, которые помогают
+            <br />
+            продавать архитектуру.
+          </h1>
+
+          <p className={styles.description}>
+            От презентации объекта до планировок, 3D-туров и заявок в отдел
+            продаж.
+          </p>
+        </header>
+
         <ServicesShowcase />
-        <Faq />
         <Contacts />
       </main>
 
       <Footer />
-
       <SocialLinks />
     </div>
   );
