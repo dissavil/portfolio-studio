@@ -75,6 +75,7 @@ export default async function CasePage({ params }: PageProps) {
       <Header />
 
       <main
+        id="main"
         className={styles.page}
         style={{ "--project-accent": project.accent } as React.CSSProperties}
       >
